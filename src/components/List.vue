@@ -2,20 +2,20 @@
   <div>
     <h2>Noticias</h2>
     <ul>
-      <li v-for="noticia in allNoticias" :key="noticia.id">{{ noticia.titulo }}</li>
+      <li v-for="noticia in allNoticias" :key="noticia.id">{{ noticia.title }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(["allNoticias"])
+    ...mapGetters(["noticias", "noticiasLocalStorage", "allNoticias"])
   },
   created() {
-    this.$store.dispatch('fetchNoticias');//actualiza las noticias y me borra las que he creado
+    this.$store.dispatch('fetchNoticias');
   },
   
 };

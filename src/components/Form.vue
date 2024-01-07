@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="crearNoticia">
-    <input type="text" v-model="titulo" placeholder="Título">
+    <input type="text" v-model="title" placeholder="Título">
 
     <button type="submit">Crear Noticia</button>
   </form>
@@ -10,18 +10,18 @@
 export default {
   data() {
     return {
-      titulo: '',
+      title: '',
 
     };
   },
   methods: {
     crearNoticia() {
       const nuevaNoticia = {
-        titulo: this.titulo,
+        title: this.title,
 
       };
       this.$store.dispatch('crearNoticia', nuevaNoticia);
-      this.titulo = '';
+      this.title = '';
     }
   }
 };

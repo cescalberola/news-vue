@@ -1,25 +1,31 @@
 import axios from "axios";
 
 const state = {
-  noticias: []
+  noticiasLocal: JSON.parse(localStorage.getItem("noticias")) || [],
+  noticiasFetch: []
 };
 
 const getters = {
-  allNoticias: (state) => state.noticias
+  noticiasLocalStorage: state => state.noticiasLocal,
+  noticiasFetch: state => state.noticiasFetch,
+  allNoticias: state => [...state.noticiasLocal, ...state.noticiasFetch]
 };
 
 const actions = {
   async fetchNoticias({ commit }) {
-    const response = await axios.get("https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=y1sMylD8zd4XCBNCf1sSf932UGJGflsp");
-    commit("setNoticias", response.data.results);
-    console.log(response.data.results)
+    try {
+      const response = await axios.get(
+        "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=y1sMylD8zd4XCBNCf1sSf932UGJGflsp"
+      );
+      commit("setNoticiasFetch", response.data.results);
+    } catch (error) {
+      console.error("Error al obtener noticias:", error);
+    }
   },
   async crearNoticia({ commit, state }, nuevaNoticia) {
     try {
-      const noticiasActualizadas = [...state.noticias, nuevaNoticia];
-      commit('setNoticias', noticiasActualizadas);
-
-      localStorage.setItem('noticias', JSON.stringify(noticiasActualizadas));
+      commit("agregarNoticiaLocal", nuevaNoticia);
+      localStorage.setItem("noticias", JSON.stringify(state.noticiasLocal));
     } catch (error) {
       console.error("Error al crear la noticia:", error);
     }
@@ -27,11 +33,12 @@ const actions = {
 };
 
 const mutations = {
-  setNoticias: (state, noticias) => {
-    state.noticias = noticias;
+  setNoticiasFetch(state, noticiasFetch) {
+    state.noticiasFetch = noticiasFetch;
   },
-  agregarNoticia(state, nuevaNoticia) {
-    state.noticias.push(nuevaNoticia);
+  agregarNoticiaLocal(state, nuevaNoticia) {
+    state.noticiasLocal = [...state.noticiasLocal, nuevaNoticia];
+    localStorage.setItem("noticias", JSON.stringify(state.noticiasLocal));
   }
 };
 
