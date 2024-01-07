@@ -1,29 +1,46 @@
-# news-vue
+# News Page Project with Vue.js
 
-This template should help get you started developing with Vue 3 in Vite.
+This project utilizes Vue.js and the News API to create a news web page. It implements Vue Router for navigating between different sections of the page.
 
-## Recommended IDE Setup
+## Functionalities
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- **Home (/home):** Main page of the application with a free theme.
+- **Form (/form):** Form for creating a new piece of news.
+- **List (/list):** Detailed list of news.
 
-## Customize configuration
+## Minimum Components
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The project consists of the following minimum components:
 
-## Project Setup
+- **Header:** Page header.
+- **Home:** Main page.
+- **Form:** Form for adding a new piece of news.
+- **ListNews:** News list.
+- **Footer:** Page footer.
 
-```sh
-npm install
-```
+## Using Vuex
 
-### Compile and Hot-Reload for Development
+Vuex is used for managing the application's state.
 
-```sh
-npm run dev
-```
+## Extras
 
-### Compile and Minify for Production
+Implemented features include:
 
-```sh
-npm run build
-```
+- **Attractive Design:** A visually appealing design has been worked on.
+- **Responsiveness:** The page adapts to different devices.
+
+## Local Storage
+
+News created through the form are stored in the browser's local storage.
+
+## Preview
+
+<p align="center">
+  <img src="src/assets/gif-news-vue.gif" width="900">
+</p>
+
+<p align="center">
+  <!--VUE-->
+  <img src="https://imgs.search.brave.com/z-e2pA-H5y-bx32ye5HjRekWr-4U4UleaCyMPRe_yjM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuY2RubG9nby5j/b20vbG9nb3Mvdi85/Mi92dWUtanMuc3Zn.svg" width="60">
+
+</p>
