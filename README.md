@@ -1,6 +1,6 @@
 # News Page Project with Vue.js
 
-This project utilizes Vue.js and the News API to create a news web page. It implements Vue Router for navigating between different sections of the page.
+This project utilizes Vue.js and the [News API](https://developer.nytimes.com/apis) to create a news web page. It implements Vue Router for navigating between different sections of the page.
 
 ## Functionalities
 
